@@ -11,7 +11,7 @@ if (hero && features) {
                 hero.classList.remove('blurred'); // Retire le flou
             }
         });
-    }, { threshold: 0.25 }); // 20% de visibilité suffit
+    }, { threshold: 0.15 }); // 20% de visibilité suffit
 
     sectionObserver.observe(features);
 }
@@ -400,4 +400,5 @@ function throttle(func, limit) {
 // Apply throttling to scroll events
 window.addEventListener('scroll', throttle(function() {
     // Scroll-based animations can be added here if needed
+
 }, 16)); // ~60fps
