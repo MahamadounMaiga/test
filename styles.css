@@ -107,47 +107,99 @@ body {
     transition: filter 0.5s ease;
 }
 
-/* Hero Section */
+/* --- Hero Section --- */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, #000000 0%, #764ba2 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
     position: relative;
     overflow: hidden;
-    padding-top: 70px; /* Ajoute un espace en haut pour compenser la hauteur de la navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 70px; /* pour nav fixe */
+    color: white;
 }
 
+/* Vidéo de fond */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Overlay si tu veux un effet sombre ou motif */
 .hero::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
-    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* Ajuste la transparence */
+    z-index: 1; /* en dessous du contenu */
 }
 
+/* Contenu principal au-dessus de la vidéo et overlay */
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 1200px; /* Aligner avec .container */
-    margin: 0 auto;
+    max-width: 1200px;
     padding: 0 20px;
 }
 
+/* Icônes flottantes en haut à droite */
+.hero-icons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 3; /* Toujours au-dessus */
+}
+
+.hero-icons a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-shadow: 0 0 5px black; /* visible même sur fond clair */
+}
+
+.hero-icons a:hover {
+    color: #FF6B35;
+    transform: scale(1.2);
+}
+
+/* Titres et sous-titres */
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Vidéo ou image média dans le hero */
 .hero-media {
-    margin: 2rem auto; /* Espacement autour de la vidéo */
-    max-width: 500px; /* Réduction de la taille maximale de la vidéo */
+    margin: 2rem auto;
+    max-width: 500px;
 }
 
 .hero-media video,
 .hero-media img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 15px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
@@ -159,27 +211,27 @@ body {
     transform: scale(1.05);
 }
 
+/* Boutons du hero */
 .hero-buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 2rem; /* Espacement entre la vidéo et les boutons */
+    margin-top: 2rem;
 }
 
-.hero-title {
-    font-size: 4rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    animation: fadeInUp 1s ease-out;
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+    .hero-media { max-width: 100%; }
 }
 
-.hero-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    animation: fadeInUp 1s ease-out 0.2s both;
+@media (max-width: 480px) {
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-buttons { flex-direction: column; }
+    .hero-icons { gap: 10px; font-size: 1.5rem; }
 }
 
 /* Buttons */
@@ -243,7 +295,20 @@ body {
 /* Features Section */
 .features {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: url("videos/3.png") center center / cover no-repeat;
+    position: relative;
+    z-index: 1;
+}
+
+.features::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4); /* ajuste selon besoin */
+    z-index: -1;
 }
 
 .features-grid {
@@ -288,7 +353,25 @@ body {
 /* Screenshots Section */
 .screenshots {
     padding: 100px 0;
-    background: white;
+    background: url("videos/2.png") center center / cover no-repeat;
+    position: relative;
+    color: white; /* pour que le texte reste lisible */
+}
+
+.screenshots::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5); /* assombrit l’image */
+    z-index: 1;
+}
+
+.screenshots .container {
+    position: relative;
+    z-index: 2; /* passe devant le voile noir */
 }
 
 .screenshots-grid {
@@ -320,9 +403,26 @@ body {
 
 /* Testimonials Section */
 .testimonials {
+    position: relative;
     padding: 100px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: url("videos/2.png") center center / cover no-repeat;
     color: white;
+}
+
+.testimonials::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5); /* couche sombre */
+    z-index: 0;
+}
+
+.testimonials .container {
+    position: relative;
+    z-index: 1; /* texte au-dessus */
 }
 
 .testimonials .section-title {
@@ -449,7 +549,7 @@ body {
 /* Useful Links Section */
 .useful-links {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: #283f56;
 }
 
 .links-grid {
@@ -701,6 +801,19 @@ body {
     }
 }
 
+@media (max-width: 480px) {
+    .screenshots-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+        gap: 15px; /* espace réduit pour mobile */
+    }
+
+    .screenshot-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
@@ -763,4 +876,42 @@ html {
 .scroll-to-top svg {
     width: 20px;
     height: 20px;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none; /* cachée par défaut */
+    position: fixed;
+    z-index: 2000;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-content {
+    display: block;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lightbox .close:hover {
+    color: #FF6B35;
 }
