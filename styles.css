@@ -295,7 +295,7 @@ body {
 /* Features Section */
 .features {
     padding: 100px 0;
-    background: url("https://github.com/user-attachments/assets/6c85e324-366c-407f-8ceb-548a7537002f") center center / cover no-repeat;
+    background: url("https://github.com/MahamadounMaiga/test/blob/main/3.png") center center / cover no-repeat;
     position: relative;
     z-index: 1;
 }
@@ -353,7 +353,7 @@ body {
 /* Screenshots Section */
 .screenshots {
     padding: 100px 0;
-    background: url("https://github.com/user-attachments/assets/57011a78-ec6b-400d-8c04-a1d8284e44ed") center center / cover no-repeat;
+    background: url("https://github.com/MahamadounMaiga/test/blob/main/2.png") center center / cover no-repeat;
     position: relative;
     color: white; /* pour que le texte reste lisible */
 }
@@ -405,7 +405,7 @@ body {
 .testimonials {
     position: relative;
     padding: 100px 0;
-    background: url("https://github.com/user-attachments/assets/57011a78-ec6b-400d-8c04-a1d8284e44ed") center center / cover no-repeat;
+    background: url("https://github.com/MahamadounMaiga/test/blob/main/2.png") center center / cover no-repeat;
     color: white;
 }
 
@@ -915,4 +915,5 @@ html {
 .lightbox .close:hover {
     color: #FF6B35;
 }
+
 
